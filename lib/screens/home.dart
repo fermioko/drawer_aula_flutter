@@ -26,17 +26,59 @@ class _HomePageState extends State<HomePage> {
               child: Text(
                 'Nosso Drawer',
                 style: TextStyle(
-                  color: const Color.fromARGB(255, 130, 1, 1),
+                  color: const Color.fromARGB(255, 70, 4, 128),
                   fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             ListTile(
-              title: const Text('Adivinhar o número'),
+              title: const Text('Adivinhar o número',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,                 
+                  color: Color.fromARGB(255, 2, 2, 2),
+                )),
               onTap: () {
                 Navigator.pushNamed(context, '/adivinhar');
               },
             ),
+            ListTile(
+              title: const Text('Calculadora',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,                 
+                  color: Color.fromARGB(255, 2, 2, 2),
+                )),
+              onTap: () {
+                Navigator.pushNamed(context, '/calculadora');
+              },
+            ),
+            ListTile(
+              title: const Text('Converter Moeda',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,                 
+                  color: Color.fromARGB(255, 2, 2, 2),
+                )),
+              onTap: () {
+                Navigator.pushNamed(context, '/converterMoeda');
+              },
+            ),
+            ListTile(
+              title: const Text('Lista Telefônica',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,                 
+                  color: Color.fromARGB(255, 2, 2, 2),
+                )),
+              onTap: () {
+                Navigator.pushNamed(context, '/listaTelefonica');
+              },
+            ),
+
+
+
 
           ],
         ),

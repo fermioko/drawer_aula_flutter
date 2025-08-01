@@ -1,5 +1,8 @@
+import 'package:drawer_aula_flutter/screens/calculadora.dart';
+import 'package:drawer_aula_flutter/screens/converter_moeda.dart';
 import 'package:drawer_aula_flutter/screens/home.dart';
 import 'package:drawer_aula_flutter/screens/jogo_numero.dart';
+import 'package:drawer_aula_flutter/screens/lista_telefonica.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,12 +20,15 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 245, 225, 5),
+          seedColor: const Color.fromARGB(255, 75, 3, 138),
         ),
       ),
       routes: {
         '/home': (context) => const HomePage(),
-        '/adivinhar': (context) => const JogoNumero(),   
+        '/adivinhar': (context) => const JogoNumero(), 
+        '/calculadora': (context) => const CalculadoraApp(),
+        '/converterMoeda': (context) => const ConverterMoedaApp(),
+        '/listaTelefonica': (context) => const ListaTelefonica(),
       },
           
     );
