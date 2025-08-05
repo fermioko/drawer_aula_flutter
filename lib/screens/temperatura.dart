@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const TemperaturaApp());
-}
+
 
 class TemperaturaApp extends StatelessWidget {
   const TemperaturaApp({super.key});

@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
-              title: const Text('Adivinhar o número',
+              title: const Text('Adivinhar o Número',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,                 
@@ -76,6 +76,19 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pushNamed(context, '/listaTelefonica');
               },
             ),
+            ListTile(
+              title: const Text('Cadastro Pessoa',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,                 
+                  color: Color.fromARGB(255, 2, 2, 2),
+                )),
+              onTap: () {
+                Navigator.pushNamed(context, '/cadastro-pessoa');
+              },
+            ),
+
+
 
 
 
