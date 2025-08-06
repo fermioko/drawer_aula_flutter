@@ -1,38 +1,14 @@
 import 'package:flutter/material.dart';
 
-
-
-class TemperaturaApp extends StatelessWidget {
-  const TemperaturaApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Temperatura Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 109, 3, 3),
-        ),
-      ),
-      home: const TemperaturaScreen(title: 'Temperatura Senac'),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class TemperaturaScreen extends StatefulWidget {
-  const TemperaturaScreen({super.key, required this.title});
-
-  final String title;
+class TemperaturaApp extends StatefulWidget {
+  const TemperaturaApp({Key? key}) : super(key: key);
 
   @override
-  State<TemperaturaScreen> createState() => _TemperaturaScreenState();
+  _TemperaturaState createState() => _TemperaturaState();
 }
 
-class _TemperaturaScreenState extends State<TemperaturaScreen> {
+class _TemperaturaState extends State<TemperaturaApp> {
   final TextEditingController _tempC = TextEditingController();
-
   String _resultado = '';
 
   double converter_para_fahrenheit(double celsius) {
@@ -61,7 +37,9 @@ class _TemperaturaScreenState extends State<TemperaturaScreen> {
         break;
     }
 
-    setState( () => _resultado = res.toString());
+    setState(() => _resultado = res.toString());
+
+
   }
 
   @override
@@ -69,7 +47,7 @@ class _TemperaturaScreenState extends State<TemperaturaScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text('Conversor de Temperatura'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -78,17 +56,24 @@ class _TemperaturaScreenState extends State<TemperaturaScreen> {
             TextField(
               controller: _tempC,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
-              decoration: const InputDecoration(labelText: 'Digite uma temperatura em Celsius: '),
+              decoration: const InputDecoration(
+                labelText: 'Digite uma temperatura em Celsius: ',
+              ),
             ),
 
-            const SizedBox(height:16),
+            const SizedBox(height: 16),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(onPressed: () => _converter('Fahrenheit'), child: const Text('Fahrenheit') ),
-                ElevatedButton(onPressed: () => _converter('Kelvin'), child: const Text('Kelvin') ),
-
+                ElevatedButton(
+                  onPressed: () => _converter('Fahrenheit'),
+                  child: const Text('Fahrenheit'),
+                ),
+                ElevatedButton(
+                  onPressed: () => _converter('Kelvin'),
+                  child: const Text('Kelvin'),
+                ),
               ],
             ),
 
@@ -98,10 +83,8 @@ class _TemperaturaScreenState extends State<TemperaturaScreen> {
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ],
-
         ),
-      ), 
-    
+      ),
     );
   }
 }

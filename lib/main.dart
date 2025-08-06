@@ -4,6 +4,8 @@ import 'package:drawer_aula_flutter/screens/converter_moeda.dart';
 import 'package:drawer_aula_flutter/screens/home.dart';
 import 'package:drawer_aula_flutter/screens/jogo_numero.dart';
 import 'package:drawer_aula_flutter/screens/lista_telefonica.dart';
+import 'package:drawer_aula_flutter/screens/temperatura.dart';
+import 'package:drawer_aula_flutter/screens/temperatura_end_point.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,9 +30,10 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomePage(),
         '/adivinhar': (context) => const JogoNumero(), 
         '/calculadora': (context) => const CalculadoraApp(),
-        '/converterMoeda': (context) => const ConverterMoedaApp(),
-       // '/temperatura': (context) => const TemperaturaApp(),
-        '/listaTelefonica': (context) => const ListaTelefonica(),
+        '/converter-moeda': (context) => const ConverterMoedaApp(),
+        '/converter-temperatura': (context) => const TemperaturaApp(),
+        '/converter-temperatura-ep': (context) => const TemperaturaEPApp(),
+        '/lista-telefonica': (context) => const ListaTelefonica(),
         '/cadastro-pessoa': (context) => CadastroPessoaApp(),
       },
           

@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: const Text('Adivinhar o Número',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,                 
                   color: Color.fromARGB(255, 2, 2, 2),
                 )),
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: const Text('Calculadora',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,                 
                   color: Color.fromARGB(255, 2, 2, 2),
                 )),
@@ -57,29 +57,51 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: const Text('Converter Moeda',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,                 
                   color: Color.fromARGB(255, 2, 2, 2),
                 )),
               onTap: () {
-                Navigator.pushNamed(context, '/converterMoeda');
+                Navigator.pushNamed(context, '/converter-moeda');
+              },
+            ),
+            ListTile(
+              title: const Text('Converter Temperatura',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,                 
+                  color: Color.fromARGB(255, 2, 2, 2),
+                )),
+              onTap: () {
+                Navigator.pushNamed(context, '/converter-temperatura');
+              },
+            ),
+            ListTile(
+              title: const Text('Converter Temperatura End Point',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,                 
+                  color: Color.fromARGB(255, 2, 2, 2),
+                )),
+              onTap: () {
+                Navigator.pushNamed(context, '/converter-temperatura-ep');
               },
             ),
             ListTile(
               title: const Text('Lista Telefônica',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,                 
                   color: Color.fromARGB(255, 2, 2, 2),
                 )),
               onTap: () {
-                Navigator.pushNamed(context, '/listaTelefonica');
+                Navigator.pushNamed(context, '/lista-telefonica');
               },
             ),
             ListTile(
               title: const Text('Cadastro Pessoa',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,                 
                   color: Color.fromARGB(255, 2, 2, 2),
                 )),
