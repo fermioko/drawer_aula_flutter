@@ -4,6 +4,7 @@ import 'package:drawer_aula_flutter/screens/converter_moeda.dart';
 import 'package:drawer_aula_flutter/screens/home.dart';
 import 'package:drawer_aula_flutter/screens/jogo_numero.dart';
 import 'package:drawer_aula_flutter/screens/lista_telefonica.dart';
+import 'package:drawer_aula_flutter/screens/menu_pessoa_local_screen.dart';
 import 'package:drawer_aula_flutter/screens/temperatura.dart';
 import 'package:drawer_aula_flutter/screens/temperatura_end_point.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
         '/converter-temperatura-ep': (context) => const TemperaturaEPApp(),
         '/lista-telefonica': (context) => const ListaTelefonica(),
         '/cadastro-pessoa': (context) => CadastroPessoaApp(),
+
+        '/menu-sqlite': (context) => const SalvarPessoaLocalScreen(),
+
       },
           
     );

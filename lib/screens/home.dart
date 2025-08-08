@@ -110,6 +110,18 @@ class _HomePageState extends State<HomePage> {
               },
             ),
 
+            //2025-08-07-Manipulação de banco de dados Local SQLite 
+            ListTile(
+              title: const Text('Salvar Pessoa SQLite',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,                 
+                  color: Color.fromARGB(255, 2, 2, 2),
+                )),
+              onTap: () {
+                Navigator.pushNamed(context, '/menu-sqlite');
+              },
+            ),
 
 
 
