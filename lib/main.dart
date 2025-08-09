@@ -1,9 +1,11 @@
 import 'package:drawer_aula_flutter/screens/cadastro_pessoa.dart';
 import 'package:drawer_aula_flutter/screens/calculadora.dart';
 import 'package:drawer_aula_flutter/screens/converter_moeda.dart';
+import 'package:drawer_aula_flutter/screens/form_pessoa_screen.dart';
 import 'package:drawer_aula_flutter/screens/home.dart';
 import 'package:drawer_aula_flutter/screens/jogo_numero.dart';
 import 'package:drawer_aula_flutter/screens/lista_telefonica.dart';
+import 'package:drawer_aula_flutter/screens/listar_pessoas_screen.dart';
 import 'package:drawer_aula_flutter/screens/menu_pessoa_local_screen.dart';
 import 'package:drawer_aula_flutter/screens/temperatura.dart';
 import 'package:drawer_aula_flutter/screens/temperatura_end_point.dart';
@@ -38,6 +40,8 @@ class MyApp extends StatelessWidget {
         '/cadastro-pessoa': (context) => CadastroPessoaApp(),
 
         '/menu-sqlite': (context) => const SalvarPessoaLocalScreen(),
+        '/form-pessoa': (context) => const FormPessoaScreen(),
+        '/listar-pessoas': (context) => const ListarPessoasScreen(),
 
       },
           
