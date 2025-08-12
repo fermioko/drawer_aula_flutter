@@ -55,6 +55,17 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
+              title: const Text('Calculadora End Point',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,                 
+                  color: Color.fromARGB(255, 2, 2, 2),
+                )),
+              onTap: () {
+                Navigator.pushNamed(context, '/calculadora-end-point');
+              },
+            ),
+            ListTile(
               title: const Text('Converter Moeda',
                 style: TextStyle(
                   fontSize: 16,

@@ -1,5 +1,6 @@
 import 'package:drawer_aula_flutter/screens/cadastro_pessoa.dart';
 import 'package:drawer_aula_flutter/screens/calculadora.dart';
+import 'package:drawer_aula_flutter/screens/calculadora_end_point.dart';
 import 'package:drawer_aula_flutter/screens/converter_moeda.dart';
 import 'package:drawer_aula_flutter/screens/form_pessoa_screen.dart';
 import 'package:drawer_aula_flutter/screens/home.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomePage(),
         '/adivinhar': (context) => const JogoNumero(), 
         '/calculadora': (context) => const CalculadoraApp(),
+        '/calculadora-end-point': (context) => const CalculadoraAppEP(),
         '/converter-moeda': (context) => const ConverterMoedaApp(),
         '/converter-temperatura': (context) => const TemperaturaApp(),
         '/converter-temperatura-ep': (context) => const TemperaturaEPApp(),
