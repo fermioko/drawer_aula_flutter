@@ -1,4 +1,178 @@
 import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+//classe modelo para o retorno
+class RetornoCalculo {
+  final double resultado;
+
+  RetornoCalculo({required this.resultado});
+
+  factory RetornoCalculo.fromJson(Map<String, dynamic> json) {
+    return RetornoCalculo(resultado: (json['resultado'] as num).toDouble());
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'resultado': resultado,
+    };
+  }
+}
+
+class CalculadoraAppEP extends StatefulWidget {
+  const CalculadoraAppEP({Key? key}) : super(key: key);
+
+  @override
+  _CalculadoraStateEP createState() => _CalculadoraStateEP();
+}
+
+class _CalculadoraStateEP extends State<CalculadoraAppEP> {
+  final TextEditingController _c1Controller = TextEditingController();
+  final TextEditingController _c2Controller = TextEditingController();
+  String _resultado = '';
+
+  Future<void> _calcularEP(String operacao) async {
+    final c1Text = _c1Controller.text.trim();
+    final c2Text = _c2Controller.text.trim();
+
+    if (c1Text.isEmpty || c2Text.isEmpty) {
+      setState(() {
+        _resultado = 'Por favor, insira os valores.';
+      });
+      return;
+    }
+
+    double? c1 = double.tryParse(c1Text.replaceAll(',', '.'));
+    double? c2 = double.tryParse(c2Text.replaceAll(',', '.'));
+
+    if (c1 == null || c2 == null) {
+      setState(() {
+        _resultado = 'Entrada inválida. Use ponto como separador decimal.';
+      });
+      return;
+    }
+
+    const String url = 'http://192.168.56.1:8080/calcular/operacao';
+
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'num1': c1, 'num2': c2, 'operacao': operacao}),
+      );
+
+      if (response.statusCode == 200) {
+        final jsonMap = jsonDecode(response.body) as Map<String, dynamic>;
+        final retorno = RetornoCalculo.fromJson(jsonMap);
+
+        setState(() {
+          if (operacao == '+') {
+            //_resultado = 'Soma: ${data['resultado']}';
+            _resultado = 'Soma: ${retorno.resultado}';
+          } else if (operacao == '-') {
+            _resultado = 'Subtração: ${retorno.resultado}';
+          } else if (operacao == '*') {
+            _resultado = 'Multiplicação: ${retorno.resultado}';
+          } else if (operacao == '/') {
+            if (c2 == 0) {
+              _resultado = 'Divisão por zero não existe.';
+              return;
+            } else {
+              _resultado = 'Divisão: ${retorno.resultado}';
+            }
+          } else {
+            _resultado = 'Operação inválida.';
+          }
+        });
+      } else {
+        setState(() {
+          _resultado = 'Erro ao calcular: ${response.statusCode}';
+        });
+      }
+    } catch (e) {
+      setState(() => _resultado = 'Erro de conexão: $e');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Calculadora End Point'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            //textefield para o primeiro número
+            TextField(
+              controller: _c1Controller,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
+                labelText: 'Digite um número: ',
+                labelStyle: TextStyle(
+                  fontSize: 20,
+                ), //aumenta o tamanho da label
+              ),
+            ),
+            //textefield para o segundo número
+            TextField(
+              controller: _c2Controller,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
+                labelText: 'Digite um número: ',
+                labelStyle: TextStyle(
+                  fontSize: 20,
+                ), //aumenta o tamanho da label
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            //espacamento entre os textfields e os botoes
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () => _calcularEP('+'),
+                  child: const Text('+'),
+                ),
+                ElevatedButton(
+                  onPressed: () => _calcularEP('-'),
+                  child: const Text('-'),
+                ),
+                ElevatedButton(
+                  onPressed: () => _calcularEP('*'),
+                  child: const Text('*'),
+                ),
+                ElevatedButton(
+                  onPressed: () => _calcularEP('/'),
+                  child: const Text('/'),
+                ),
+              ],
+            ),
+
+            //linha com os botoes de op, em horizontal (linha)
+            const SizedBox(height: 24),
+
+            Text(
+              _resultado,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            // exibe o resultado atual e atualiza automaticamente ao clicar no botao.
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+/* import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -175,7 +349,7 @@ class _CalculadoraStateEP extends State<CalculadoraAppEP> {
       ),
     );
   }
-}
+} */
 
 /* class CalculadoraAppEP extends StatefulWidget {
   const CalculadoraAppEP({Key? key}) : super(key: key);
